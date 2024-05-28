@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import "bootstrap-icons/font/bootstrap-icons.css"
 
-const socket = io('http://84.247.184.37:3020/', {
+const socket = io('http://localhost:3023/', {
   reconnection: true,
   reconnectionAttempts: Infinity,
   reconnectionDelay: 1000,

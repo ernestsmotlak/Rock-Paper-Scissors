@@ -6,13 +6,13 @@ const http = require('http');
 const { Server } = require('socket.io');
 
 const app = express();
-const port = 3020;
+const port = 3023;
 
 app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to SQLite database
-const db = new sqlite3.Database('War-database.db', sqlite3.OPEN_READWRITE, (err) => {
+const db = new sqlite3.Database('Rps_db.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error('Error connecting to database:', err.message);
     } else {

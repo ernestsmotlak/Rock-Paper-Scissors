@@ -15,7 +15,7 @@ const Login = ({ setUuid, setBtnInLoginClicked, setUsernameFromLogin }) => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://84.247.184.37:3020/login', {
+            const response = await fetch('http://localhost:3023/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,6 +76,8 @@ const Login = ({ setUuid, setBtnInLoginClicked, setUsernameFromLogin }) => {
             </form>
             <br />
             {error && <span className='text-danger fw-bold fs-3 mb-3'>{error}</span>}
+
+
             <div className="text-center p-3 fixed-bottom"
                 // style={{ backgroundColor: '#e5e5e5' }}
                 style={{ backgroundColor: '#e5e5e5', borderColor: '#cdcccd', borderWidth: '1px', borderStyle: 'solid', borderRadius: '5px' }}>
@@ -89,6 +91,7 @@ const Login = ({ setUuid, setBtnInLoginClicked, setUsernameFromLogin }) => {
 
                 </a>
             </div>
+
         </div>
     )
 }
