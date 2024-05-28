@@ -133,10 +133,7 @@ const User = ({ usernameFromLogin }) => {
       ) : (
         <div className="container mt-4">
           <div className="card">
-            <div className="card-header">
-              <h5>Chat</h5>
-            </div>
-            <div className="card-body" style={{ maxHeight: '600px', overflowY: 'scroll', scrollBehavior: 'smooth' }} ref={messageContainerRef}>
+            <div className="card-body" ref={messageContainerRef}>
               {sortedMessages.map((data, index) => (
                 <div
                   key={index}
