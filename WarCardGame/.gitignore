@@ -1,0 +1,10 @@
+# Ignore node_modules directory
+/briscuola/node_modules
+/briscuola/build
+backend/node_modules/
+
+# Ignore build artifacts
+/build
+/dist
+
+/.DS_Store
