@@ -1,53 +1,41 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Game = (props) => {
-    const [gameHistory, setgameHistory] = useState([]);
+    const [gameHistory, setGameHistory] = useState([]);
+    const results = ['tie, play again!', 'won', 'lost'];
 
-    const game = (me, opponent) => {
-        if (me === opponent) {
-            return 'tie, play again!';
-        }
+    useEffect(() => {
+        const playGame = (me, opponent) => {
+            let result;
+            if (me === opponent) {
+                result = results[0];
+            } else if (
+                (me === 'Rock' && opponent === 'Scissors') ||
+                (me === 'Scissors' && opponent === 'Paper') ||
+                (me === 'Paper' && opponent === 'Rock')
+            ) {
+                result = results[1];
+            } else {
+                result = results[2];
+            }
+            setGameHistory(prevHistory => [...prevHistory, result]);
+        };
 
-        if (me === 'Rock' && opponent === 'Scissors') {
-            return 'won';
-            // send 'lost';
-        }
-
-        if (me === 'Rock' && opponent === 'Paper') {
-            return 'lost';
-            // send 'won';
-        }
-
-        if (me === 'Scissors' && opponent === 'Paper') {
-            return 'won';
-            // send 'lost';
-        }
-
-        if (me === 'Scissors' && opponent === 'Rock') {
-            return 'lost';
-            // send 'won';
-        }
-
-        if (me === 'Paper' && opponent === 'Rock') {
-            return 'won';
-            // send 'lost';
-        }
-
-        if (me === 'Paper' && opponent === 'Scissors') {
-            return 'lost';
-            // send 'won';
-        }
-    };
+        playGame(props.choice, props.opponentChoice);
+    }, [props.choice, props.opponentChoice]);
 
     return (
         <div>
             <h4>Your Choice: {props.choice}</h4>
             <h4>Opponent's Choice: {props.opponentChoice}</h4>
             <br />
-            Results: {game(props.choice, props.opponentChoice)}
+            Current game: 
+            {gameHistory[gameHistory.length - 1]}
+            <br />
+            Results: {gameHistory}
+            <br />
         </div>
     )
 }
 
-export default Game
+export default Game;
